@@ -1,0 +1,101 @@
+{% extends 'innerBase.html'  %}
+
+{% block Content %}
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="page-bar">
+			<div class="page-title-breadcrumb">
+				<div class=" pull-left">
+					<div class="page-title">View all trips</div>
+				</div>
+				<ol class="breadcrumb page-breadcrumb pull-right">
+					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{% url 'index' %}">Home</a>&nbsp;<i
+							class="fa fa-angle-right"></i>
+					</li>
+					<li class="active">All Trips</li>
+				</ol>
+			</div>
+		</div>
+
+		
+		<div class="row">
+			<div class="col-md-12">
+
+				{% for one_trip in one_trip %}
+				<div class="card card-box">
+					<div class="card-head">
+						<header>{{ one_trip.start_time  }} - {{ one_trip.end_time }}</header>
+
+					</div>
+					<div class="card-body ">
+						<div>
+							Bus: {{ one_trip.bus.bus_number  }} 
+						</div>
+						<div>
+							Driver: {{ one_trip.driver.person.first_name  }} {{ one_trip.driver.person.last_name  }}
+						</div>
+						<div>
+							Cost: GH₵{{ one_trip.cost  }}.00
+						</div>
+
+						
+
+						
+						<div class="table-scrollable">
+							<table class="table table-hover table-checkable order-column full-width" id="example{{one_trip.id}}">
+								<thead>
+									<tr>
+										<th class="center"> Date</th>
+										<th class="center"> Full Name </th>
+										<th class="center"> Pickup Address </th>
+										<th class="center"> Pickup Time </th>
+										<th class="center"> Dropoff Address </th>
+										<th class="center"> Dropoff Time </th>
+										<th class="center"> Payment </th>
+										<th class="center"> # Trips </th>
+										<th class="center"> Edit </th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for trip in trips %}
+									{% if trip.trip.id == one_trip.id %}
+									<form action="">
+										<tr class="odd gradeX">
+											<td class="center"> {{ trip.trip_date }} </td>
+											<td class="center"> {{ trip.staff.person.first_name }} {{ trip.staff.person.last_name }} </td>
+											<td class="center"> {{ trip.pickup_Address }} </td>
+											<td class="center"> {{ trip.pickup_time }} </td>
+											<td class="center"> {{ trip.dropoff_Address }} </td>
+											<td class="center"> {{ trip.dropoff_time }} </td>
+											<td class="center"> {{ trip.payment }} </td>
+											<td class="center"> {{ trip.staff.person.number_of_trips }} </td>
+											<td class="center">
+												<a class="btn btn-tbl-delete btn-xs" style="background:#3d5192">
+													<i class="fa fa-pencil"></i>
+												</a>
+												<a class="btn btn-tbl-delete btn-xs">
+													<i class="fa fa-trash-o"></i>
+												</a>
+												
+											</td>
+										</tr>
+									</form>
+									{% endif %}
+
+									{% endfor %}
+								
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{% endblock Content %}

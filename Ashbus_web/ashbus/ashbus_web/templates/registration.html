@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- BEGIN HEAD -->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="Responsive Admin Template" />
+    <meta name="author" content="SmartUniversity" />
+    <title>Ashesi Hostel Management System</title>
+    <!-- icons -->
+    <link
+      href="css/simple-line-icons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="css/material.min.css" />
+    <link rel="stylesheet" href="css/material_style.css" />
+    <!-- animation -->
+    <link href="css/animate_page.css" rel="stylesheet" />
+    <link href="css/steps.css" rel="stylesheet" />
+    <!-- Template Styles -->
+    <link href="css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="css/theme-color.css" rel="stylesheet" type="text/css" />
+    <!-- Poppins Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome  -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
+  </head>
+  <!-- END HEAD -->
+
+  <body>
+    <div class="page-wrapper">
+      <div>
+		<div style="width: 100%; height: 100px;background: #923D41;">
+			<img src="img/ashesi_logo.png" class="img-fluid" style="margin-top: 20px;margin-left: 10px; height: 40px;width:130px;">
+		</div> 
+        <div class="container">
+
+          <!-- basic wizard -->
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-head">
+                  <header>Basic Wizard</header>
+                </div>
+                <div class="card-body ">
+                  <div id="wizard">
+                    <h1>First Step</h1>
+                    <div>First Content</div>
+                    <h1>Second Step</h1>
+                    <div>Second Content</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+		  </div>
+		  
+          <!-- wizard with validation-->
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Roommate selection</header>
+                </div>
+                <div class="card-body ">
+                  <form id="example-advanced-form" action="#">
+                    <h3>Account Information</h3>
+                    <fieldset>
+                      <div class="col-lg-12 p-t-20">
+                        <div
+                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                        >
+                          <input
+                            class="mdl-textfield__input"
+                            type="text"
+                            pattern="[A-Z,a-z]*"
+                            name="userName"
+                            id="username"
+                            required
+                          />
+                          <label class="mdl-textfield__label" for="username"
+                            >Username</label
+                          >
+                          <span class="mdl-textfield__error"
+                            >Enter User Name!</span
+                          >
+                        </div>
+                        <div
+                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                        >
+                          <input
+                            class="mdl-textfield__input"
+                            type="password"
+                            id="password-2"
+                            name="password"
+                            required
+                          />
+                          <label class="mdl-textfield__label" for="password-2"
+                            >Password</label
+                          >
+                          <span class="mdl-textfield__error"
+                            >Enter Valid Password!</span
+                          >
+                        </div>
+                        <div
+                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                        >
+                          <input
+                            class="mdl-textfield__input"
+                            type="password"
+                            id="confirm-2"
+                            name="confirm"
+                            required
+                          />
+                          <label class="mdl-textfield__label"
+                            >Confirm Password</label
+                          >
+                          <span class="mdl-textfield__error"
+                            >Enter Valid Password!</span
+                          >
+                        </div>
+                      </div>
+                    </fieldset>
+                    <h3>Profile Information</h3>
+                    <fieldset>
+                      <div
+                        class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                      >
+                        <input
+                          class="mdl-textfield__input"
+                          type="text"
+                          id="name-2"
+                          name="name"
+                          required
+                        />
+                        <label class="mdl-textfield__label">First name *</label>
+                        <span class="mdl-textfield__error"
+                          >Enter First Name!</span
+                        >
+                      </div>
+                      <div
+                        class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                      >
+                        <input
+                          class="mdl-textfield__input"
+                          type="text"
+                          id="surname-2"
+                          name="surname"
+                          required
+                        />
+                        <label class="mdl-textfield__label">Last name *</label>
+                        <span class="mdl-textfield__error"
+                          >Enter Last Name!</span
+                        >
+                      </div>
+                      <div
+                        class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                      >
+                        <input
+                          class="mdl-textfield__input"
+                          type="email"
+                          id="email-2"
+                          name="email"
+                          required
+                        />
+                        <label class="mdl-textfield__label">Email *</label>
+                        <span class="mdl-textfield__error"
+                          >Enter Valid Email!</span
+                        >
+                      </div>
+                      <div
+                        class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width"
+                      >
+                        <input
+                          class="mdl-textfield__input"
+                          type="number"
+                          id="age-2"
+                          name="age"
+                          required
+                        />
+                        <label class="mdl-textfield__label">Age *</label>
+                        <span class="mdl-textfield__error"
+                          >Enter Valid Age!</span
+                        >
+                      </div>
+                    </fieldset>
+                    <h3>Finish</h3>
+                    <fieldset>
+                      <div class="col-lg-12 p-t-20">
+                        <label
+                          class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                          for="checkbox-1"
+                        >
+                          <input
+                            type="checkbox"
+                            id="checkbox-1"
+                            name="acceptTerms"
+                            class="mdl-checkbox__input"
+                            required
+                          />
+                          <span class="mdl-checkbox__label"
+                            >I agree with the Terms and Conditions.</span
+                          >
+                        </label>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Verticle Steps</header>
+                </div>
+                <div id="example-vertical">
+                  <h3>Keyboard</h3>
+                  <section>
+                    <p>
+                      Try the keyboard navigation by clicking arrow left or
+                      right!
+                    </p>
+                  </section>
+                  <h3>Effects</h3>
+                  <section>
+                    <p>Wonderful transition effects.</p>
+                  </section>
+                  <h3>Pager</h3>
+                  <section>
+                    <p>
+                      The next and previous buttons help you to navigate through
+                      your content.
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end page content -->
+      </div>
+      <!-- end page container -->
+      <!-- start footer -->
+      <div class="page-footer">
+        <div class="page-footer-inner">
+          2018 &copy; Spice Hotel Template By
+          <a href="mailto:redstartheme@gmail.com" target="_top" class="makerCss"
+            >RedStar Theme</a
+          >
+        </div>
+        <div class="scroll-to-top">
+          <i class="icon-arrow-up"></i>
+        </div>
+      </div>
+      <!-- end footer -->
+    </div>
+    <!-- start js include path -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery.blockui.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.steps.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+
+    <script src="js/steps-data.js"></script>
+
+    <!-- counterup -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Common js-->
+    <script src="js/app.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/theme-color.js"></script>
+    <!-- material -->
+    <script src="js/material.min.js"></script>
+    <!-- animation -->
+    <script src="js/animations.js"></script>
+    <!-- chart js -->
+    <script src="js/Chart.bundle.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/home-data2.js"></script>
+    <!-- sparkline -->
+    <script src="js/jquery.sparkline.min.js"></script>
+    <script src="js/sparkline-data.js"></script>
+    <!-- end js include path -->
+  </body>
+</html>

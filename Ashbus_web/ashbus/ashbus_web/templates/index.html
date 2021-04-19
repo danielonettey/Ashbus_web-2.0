@@ -1,0 +1,204 @@
+{% extends 'innerBase.html'  %}
+
+{% block Content  %}
+{% load static %}
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="page-bar">
+			<div class="page-title-breadcrumb">
+				<div class=" pull-left">
+					<div class="page-title">Welcome, Admin!</div>
+				</div>
+				<ol class="breadcrumb page-breadcrumb pull-right">
+					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+							href="{% url 'index' %}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+					</li>
+					<li class="active">Dashboard</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class= "row">
+			<div class="col-md-12">
+				<!-- Google Maps -->
+				<div id="basic_gmap" class="gmaps" style="height: 500px"> </div>
+			</div>		
+		</div>
+		<br> <br>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				{% for one_trip in one_trip %}
+				<div class="card card-box">
+					<div class="card-head">
+						<header>{{ one_trip.start_time  }} - {{ one_trip.end_time }}</header>
+
+					</div>
+					<div class="card-body ">
+						<div>
+							Bus: {{ one_trip.bus.bus_number  }} 
+						</div>
+						<div>
+							Driver: {{ one_trip.driver.person.first_name  }} {{ one_trip.driver.person.last_name  }}
+						</div>
+						<div>
+							Cost: GH₵{{ one_trip.cost  }}.00
+						</div>
+
+						
+						<div class="table-scrollable">
+							<table class="table table-hover table-checkable order-column full-width" id="example{{one_trip.id}}">
+								<thead>
+									<tr>
+										<th class="center"> Date</th>
+										<th class="center"> Full Name </th>
+										<th class="center"> Pickup Address </th>
+										<th class="center"> Pickup Time </th>
+										<th class="center"> Dropoff Address </th>
+										<th class="center"> Dropoff Time </th>
+										<th class="center"> Payment </th>
+										<th class="center"> # Trips </th>
+										<th class="center"> Edit </th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for trip in trips %}
+									{% if trip.trip.id == one_trip.id %}
+									<form action="">
+										<tr class="odd gradeX">
+											<td class="center"> {{ trip.trip_date }} </td>
+											<td class="center"> {{ trip.staff.person.first_name }} {{ trip.staff.person.last_name }} </td>
+											<td class="center"> {{ trip.pickup_Address }} </td>
+											<td class="center"> {{ trip.pickup_time }} </td>
+											<td class="center"> {{ trip.dropoff_Address }} </td>
+											<td class="center"> {{ trip.dropoff_time }} </td>
+											<td class="center"> {{ trip.payment }} </td>
+											<td class="center"> {{ trip.staff.person.number_of_trips }} </td>
+											<td class="center">
+												<a class="btn btn-tbl-delete btn-xs" style="background:#3d5192">
+													<i class="fa fa-pencil"></i>
+												</a>
+												<a class="btn btn-tbl-delete btn-xs">
+													<i class="fa fa-trash-o"></i>
+												</a>
+												
+											</td>
+										</tr>
+									</form>
+									{% endif %}
+
+									{% endfor %}
+								
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				{% endfor %}
+				
+				</div>
+			</div>
+		</div>
+
+
+		
+	</div>
+</div>
+{% endblock Content  %}
+
+
+
+{% block Maps %}
+{% load static %}
+
+<!-- google map -->
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyCyaLY9HCnfIJTagugwaCH9u4dz_DIGA6E"></script>
+<script src="{% static 'js/gmaps.min.js' %}"></script>
+
+
+<script>
+
+	var MapsGoogle = function() {
+
+		t = function() {
+			var o = new GMaps({
+				div: "#basic_gmap",
+				lat: 5.702576638250009,
+				lng: -0.19102501814096706
+			});
+
+			{% for route in route %}
+
+			o.addMarker({
+				lat: {{ route.getStartLat  }},
+				lng: {{ route.getStartLng }},
+				title: "{{ route.start_address }}",
+
+				infoWindow: {
+					content: '<span style="color:#000">{{ route.route }}</span>'
+				}
+			}),
+			o.addMarker({
+				lat: {{ route.getEndLat }},
+				lng: {{ route.getEndLng }},
+				title: "{{route.end_address}}",
+
+				infoWindow: {
+					content: '<span style="color:#000">{{route.end_address}}</span>'
+				}
+			}),
+			
+
+			o.drawPolyline({
+				path: {{ route.getRouteList }},
+
+				{% if route.id|divisibleby:2 == 0 %}
+					strokeColor: "#3d5192",
+
+				{% else %}
+					strokeColor: "#3d9255",
+				{% endif %}
+
+				strokeOpacity: .9,
+				strokeWeight: 4
+			}) 
+			
+			
+			{% endfor %}
+
+			{% for trip in trips %}
+
+			o.addMarker({
+				lat: {{ trip.trip.bus.getLat }},
+				lng: {{ trip.trip.bus.getLng }},
+				icon: "{% static 'img/car_icon.png' %}",
+
+				title: "{{ trip.trip.bus.address }}",
+
+				infoWindow: {
+					content: '<span style="color:#000">{{ trip.trip.bus.address }}</span>'
+				}
+			}),
+			{% endfor %}
+			o.setZoom(11)
+		}
+		return {
+			init: function() {
+				t()
+			}
+		}
+	}();
+
+	jQuery(document).ready(function() {
+	'use strict';
+		MapsGoogle.init();
+		console.log('working');
+		
+	});
+
+</script>
+
+{% endblock Maps  %}

@@ -1,0 +1,82 @@
+{% extends 'innerBase.html'  %}
+
+{% block Content %}
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="page-bar">
+			<div class="page-title-breadcrumb">
+				<div class=" pull-left">
+					<div class="page-title">View all staff</div>
+				</div>
+				<ol class="breadcrumb page-breadcrumb pull-right">
+					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{% url 'index' %}">Home</a>&nbsp;<i
+							class="fa fa-angle-right"></i>
+					</li>
+					<li class="active">Staff</li>
+				</ol>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-box">
+					<!-- <div class="card-head">
+						<header>Staff</header>
+						<div class="tools">
+							<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+						</div>
+					</div> -->
+					<div class="card-body ">
+						<div class="row p-b-20">
+						</div>
+						<div class="table-scrollable">
+							<table class="table table-hover table-checkable order-column full-width" id="example4">
+								<thead>
+									<tr>
+										<th class="center"> Card # </th>
+										<th class="center"> First Name </th>
+										<th class="center"> Last Name</th>
+										<th class="center"> Gender </th>
+										<th class="center"> Mobile </th>
+										<th class="center"> Email </th>
+										<th class="center"> Amount </th>
+										<th class="center"> # Trips </th>
+										<th class="center"> Edit </th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for staff in staff%}
+									<form action="">
+										<tr class="odd gradeX">
+											<td class="center"> {{ staff.card_id }} </td>
+											<td class="center"> {{ staff.person.first_name }} </td>
+											<td class="center"> {{ staff.person.last_name }} </td>
+											<td class="center"> {{ staff.person.gender }} </td>
+											<td class="center"> {{ staff.person.mobile }} </td>
+											<td class="center"> {{ staff.person.email }} </td>
+											<td class="center"> ₵{{ staff.amount }}.00 </td>
+											<td class="center"> {{ staff.person.number_of_trips }} </td>
+											<td class="center">
+												<a href="{% url 'edit_staff' staff.id %}" class="btn btn-tbl-delete btn-xs">
+													<i class="fa fa-pencil"></i>
+												</a>
+												
+											</td>
+										</tr>
+									</form>
+									{% endfor %}
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{% endblock Content %}

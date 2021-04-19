@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta name="description" content="Responsive Admin Template" />
+	<meta name="author" content="SmartUniversity" />
+	<title>Ashesi Housing</title>
+	<!-- icons -->
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+
+
+	<!-- bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+
+	<!-- style -->
+	<link rel="stylesheet" href="css/login.css">
+	<!-- favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" />
+</head>
+
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100 page-background">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<i class="fa fa-home" style="color: #923D41;"></i>
+					</span>
+					<div style="padding: 30px 0px;text-align: center;color: white;font-size: 23px;">
+						Admin
+					</div>
+				
+					<div class="wrap-input100 validate-input" data-validate="Enter valid unique code">
+						<input class="input100" type="text" name="studentID" placeholder="Enter unique code">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					
+					<div class="prompt_studentID">
+						<p>
+							Please enter the unique ID
+						</p>
+					</div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" href="{% url 'index' %}">
+							Next
+						</button>
+					</div>
+					<div class="text-center p-t-90">
+						<a class="txt1" href="#">
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- start js include path -->
+	<script src="js/jquery.min.js"></script>
+	<!-- bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/login.js"></script>
+	<!-- end js include path -->
+</body>
+
+</html>

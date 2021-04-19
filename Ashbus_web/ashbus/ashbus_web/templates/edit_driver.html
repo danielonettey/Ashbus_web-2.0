@@ -1,0 +1,130 @@
+{% extends 'innerBase.html'  %}
+
+{% block Content %}
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="page-bar">
+			<div class="page-title-breadcrumb">
+				<div class=" pull-left">
+					<div class="page-title">Edit driver </div>
+				</div>
+				<ol class="breadcrumb page-breadcrumb pull-right">
+					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+							href="{% url 'index' %}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+					</li>
+					<li><a class="parent-item" href="">Booking</a>&nbsp;<i class="fa fa-angle-right"></i>
+					</li>
+					<li class="active">Add Booking</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card-box">
+					<div class="card-head">
+						<header>Add Room Booking</header>
+						<button id="panel-button"
+							class="mdl-button mdl-js-button mdl-button--icon pull-right"
+							data-upgraded=",MaterialButton">
+							<i class="material-icons">more_vert</i>
+						</button>
+						<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+							data-mdl-for="panel-button">
+							<li class="mdl-menu__item"><i class="material-icons">assistant_photo</i>Action
+							</li>
+							<li class="mdl-menu__item"><i class="material-icons">print</i>Another action
+							</li>
+							<li class="mdl-menu__item"><i class="material-icons">favorite</i>Something else
+								here</li>
+						</ul>
+					</div>
+					<form action="{% url 'edit_driver' driver.id %}"  method="POST"  class="">
+						{% csrf_token %}
+						<div class="card-body row">
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" name="first_name" id="txtFirstName" value="{{ driver.person.first_name }}">
+									<label class="mdl-textfield__label">First Name</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" name="last_name" id="txtLasttName" value="{{ driver.person.last_name }}">
+									<label class="mdl-textfield__label">Last Name</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="email" name="email" id="txtemail" value="{{ driver.person.email }}">
+									<label class="mdl-textfield__label">Email</label>
+									<span class="mdl-textfield__error">Enter Valid Email Address!</span>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
+									<input class="mdl-textfield__input" type="text" id="sample2" value=""
+										readonly tabIndex="-1" data-val="{{ driver.person.gender }}">
+									<label for="sample2" class="pull-right margin-0">
+										<i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+									</label>
+									<label for="sample2" class="mdl-textfield__label">Gender</label>
+									<ul data-mdl-for="sample2"
+										class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+										<li class="mdl-menu__item" data-val="Male">Male</li>
+										<li class="mdl-menu__item" data-val="Female">Female</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" name="mobile" value="{{ driver.person.mobile }}"
+										pattern="-?[0-9]*(\.[0-9]+)?" id="text5">
+									<label class="mdl-textfield__label" for="text5">Mobile Number</label>
+									<span class="mdl-textfield__error">Number required!</span>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" maxlength="20" type="text" name="card_id" id="card_id" value="{{ driver.license_number }}">
+									<label class="mdl-textfield__label">License #</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" id="amount" name="amount" value="{{ driver.ratings }}">
+									<label class="mdl-textfield__label">Ratings</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="number" id="number_trips" name="number_of_trips" value="{{ driver.person.number_of_trips }}">
+									<label class="mdl-textfield__label">No of Trips</label>
+								</div>
+							</div>
+							
+							<div class="col-lg-12 p-t-20 text-center">
+								<button type="submit" value="submit"
+									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
+									<a href="{% url 'index' %}">
+										<button type="button" 
+										class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Cancel</button>
+									</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock Content %}

@@ -1,0 +1,91 @@
+{% extends 'innerBase.html'  %}
+
+{% block Content %}
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="page-bar">
+			<div class="page-title-breadcrumb">
+				<div class=" pull-left">
+					<div class="page-title">Edit Bus </div>
+				</div>
+				<ol class="breadcrumb page-breadcrumb pull-right">
+					<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+							href="{% url 'index' %}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+					</li>
+					<li><a class="parent-item" href="">Booking</a>&nbsp;<i class="fa fa-angle-right"></i>
+					</li>
+					<li class="active">Add Booking</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card-box">
+					<form action="{% url 'edit_bus' bus.id %}"  method="POST"  class="">
+						{% csrf_token %}
+						<div class="card-body row">
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" name="bus_number" id="txtFirstName" value="{{ bus.bus_number }}">
+									<label class="mdl-textfield__label">Bus Number</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" name="status" id="txtLasttName" value="{{ bus.status }}">
+									<label class="mdl-textfield__label">Status</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="number" name="capacity" id="txtemail" value="{{ bus.capacity }}">
+									<label class="mdl-textfield__label">Capacity</label>
+									<span class="mdl-textfield__error">Enter valid number!</span>
+								</div>
+							</div>
+
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="number" name="seats_occupied" id="txtemail" value="{{ bus.seats_occupied }}">
+									<label class="mdl-textfield__label">Seats Occupied</label>
+									<span class="mdl-textfield__error">Enter valid number!</span>
+								</div>
+							</div>
+							
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" name="start_location" id="start_location" value="{{ bus.route.start_location }}">
+									<label class="mdl-textfield__label">Start Location</label>
+								</div>
+							</div>
+							<div class="col-lg-6 p-t-20">
+								<div
+									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+									<input class="mdl-textfield__input" type="text" id="amount" name="end_location" value="{{ bus.route.end_location }}">
+									<label class="mdl-textfield__label">End Location</label>
+								</div>
+							</div>
+							
+							<div class="col-lg-12 p-t-20 text-center">
+								<button type="submit" value="submit"
+									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
+								<a href="{% url 'index' %}">
+									<button type="button" 
+									class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Cancel</button>
+								</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock Content %}
