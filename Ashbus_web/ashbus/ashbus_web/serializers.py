@@ -29,6 +29,11 @@ class BusSerializer(serializers.ModelSerializer):
         model = Bus    
         fields = '__all__'
 
+class RouteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Route    
+        fields = '__all__'
+
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person

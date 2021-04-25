@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!3l_bk-56b86)*nblu9-0@1)ylgob*o!6wsu$4(sq%#=(5&-ln
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com','localhost','10.0.2.2']
+ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com','localhost','10.0.2.2','127.0.0.1']
 
 
 # Application definition
@@ -130,7 +130,7 @@ STATICFILES_DIRS = (
 )
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
