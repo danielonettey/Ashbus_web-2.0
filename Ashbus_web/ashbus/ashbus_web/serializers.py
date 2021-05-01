@@ -51,3 +51,8 @@ class StaffSerializer(serializers.ModelSerializer):
         model = Staff    
         fields = '__all__'
 
+class AnnouncementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Announcement
+        ordering = ("-id")    
+        fields = '__all__'
