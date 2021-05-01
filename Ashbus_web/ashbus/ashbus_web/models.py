@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 # Create your models here.
 class Route(models.Model):
@@ -9,7 +8,7 @@ class Route(models.Model):
     end_location = models.CharField(max_length=40)
     route = models.TextField(default="w}qa@fwc@DP@zAHPF@ZBAZ@rGClJAzLEhXCpWGfN?fI?rHC~QCvH?xIGdYEbE?rFCx\\EdSCze@GfNAD?~DAlAG?G@MJEBKBa@AqGEkE@mNE_K?cK?gDDiCXoAXuClAyE~Bg@R]DK@]FE?EBCD?@?@CHEHGLmAjAgAnAwCtDiCnDkChDs@p@cGbEq@Z}@n@HTo@Pq@ZQLyApAo@`@s@VgB\\qA`@aDjA}FlBmA\\uAV_E\\yGh@kAFc@@c@Ci@IaBQ{AUgEc@uI}@eFe@uASyDs@uD}@wGoAuFy@eCKmCYeKcA}MsAkMuAuFs@cKaAgHq@mDm@a@I}Bu@iCeAuB_A_I_EyAi@wA]gAOeAGa@Aa@?eANcCZoAPwCTaCBsOw@_DOcJA_AA_AI_AG_Dk@{Bs@}@c@oEkCwBqAeFmDoDeCaDuBkC_BsAq@sCkAgFmByIeDm@]q@i@}EoGaC_DqA{As@k@m@UmBg@kFmAsIoBkD{@gAQkCYcD[oDWcCY}Bg@eBc@aDiAuBo@iDkAWK{@g@g@_@[c@W{@KyBG_@Om@gAoBUa@kA}A[W_Ag@iAm@yAgA{GyEaCeBaAo@cCeBsA_Ao@[wBu@[IA]Cc@[kD@k@Ha@N_@j@w@V[pAeA`BgAv@Uj@GXBtBb@b@LdDfAbDlA`Cz@jAj@TRFJRz@F^z@V")
 
-    
+
     # For Start Location
     def getStartLat(self):
         return [float(s.strip()) for s in self.start_location.split(",")][0]
@@ -24,9 +23,9 @@ class Route(models.Model):
     def getEndLng(self):
         return [float(s.strip()) for s in self.end_location.split(",")][1]
 
-    
 
-    #Generate List of points from encoded points 
+
+    #Generate List of points from encoded points
     def decode_polyline(self, polyline_str):
         '''Pass a Google Maps encoded polyline string; returns list of lat/lon pairs'''
         ind, lat, lng = 0, 0, 0
@@ -38,14 +37,14 @@ class Route(models.Model):
         # while loop iteration, a single coordinate is decoded.
         while ind < len(polyline_str):
             # Gather lat/lon changes, store them in a dictionary to apply them later
-            for unit in ['latitude', 'longitude']: 
+            for unit in ['latitude', 'longitude']:
                 shift, result = 0, 0
 
                 while True:
                     byte = ord(polyline_str[ind]) - 63
                     ind += 1
                     result |= (byte & 0x1f) << shift
-                    
+
                     shift += 5
                     if not byte >= 0x20:
                         break
@@ -69,7 +68,7 @@ class Route(models.Model):
     #Convert List Points to floats
     def getRouteList(self):
         return self.decode_polyline(str(self.route).replace("\\\\","\\"))
-    
+
     def __str__(self):
             return str(self.start_address) + " to " + str(self.end_address)
 
@@ -88,10 +87,10 @@ class Bus(models.Model):
 
     def getLng(self):
         return [float(s.strip()) for s in self.location.split(",")][1]
-        
+
     def __str__(self):
         return str(self.bus_number)
-    
+
 class Person(models.Model):
     email = models.CharField(max_length=40)
     first_name = models.CharField(max_length=20)
@@ -107,7 +106,7 @@ class Person(models.Model):
 
 class Driver(models.Model):
     license_number = models.CharField(max_length=20)
-    
+
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -129,7 +128,7 @@ class Trip(models.Model):
     bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
     start_time = models.TimeField(auto_now=False, auto_now_add=False)
     end_time = models.TimeField(auto_now=False, auto_now_add=False)
-    
+
     def __str__(self):
         return str(self.start_time)
 
@@ -147,8 +146,8 @@ class Staff_Trip(models.Model):
     payment = models.CharField(max_length=20, default="Pending")
 
     def __str__(self):
-        return str(self.trip.start_time) + " - " + str(self.staff.person.first_name) + "  " + str(self.staff.person.last_name) 
-    
+        return str(self.trip.start_time) + " - " + str(self.staff.person.first_name) + "  " + str(self.staff.person.last_name)
+
 
 class Announcement(models.Model):
     message = models.TextField()
