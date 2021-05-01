@@ -3,6 +3,7 @@ from ashbus.ashbus_web.models import *
 from rest_framework import generics
 from rest_framework.response import Response
 from ashbus.ashbus_web.serializers import *
+
 # Create your views here.
 
 
@@ -24,8 +25,11 @@ class DriverDataGet(generics.ListCreateAPIView):
 
 class StaffDataGet(generics.ListCreateAPIView):
     queryset = Staff.objects.all()
-    queryset = Staff.objects.all()
     serializer_class = StaffSerializer
+
+class AnnouncementDataGet(generics.ListCreateAPIView):
+    queryset = Announcement.objects.all()
+    serializer_class = AnnouncementSerializer
 
 
 def HomeView(request):
