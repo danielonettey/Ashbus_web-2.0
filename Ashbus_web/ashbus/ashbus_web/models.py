@@ -152,7 +152,7 @@ class Staff_Trip(models.Model):
 
 class Announcement(models.Model):
     message = models.TextField()
-    time_created = models.TimeField(auto_now=True)
+    time_created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.message)

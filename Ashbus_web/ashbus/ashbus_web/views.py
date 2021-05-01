@@ -14,6 +14,10 @@ class BusDataGet(generics.ListCreateAPIView):
     queryset = Bus.objects.all()
     serializer_class = BusSerializer
 
+class RouteDataGet(generics.ListCreateAPIView):
+    queryset = Route.objects.all()
+    serializer_class = RouteSerializer
+
 class DriverDataGet(generics.ListCreateAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
@@ -29,7 +33,6 @@ def HomeView(request):
     trips = Staff_Trip.objects.all()
     one_trip = Trip.objects.all()
     return render(request,"index.html", {"route" : route, "trips" : trips, "one_trip" : one_trip})
-
 
 def StaffView(request):
     staff = Staff.objects.all()
@@ -47,6 +50,10 @@ def TripView(request):
     trip = Staff_Trip.objects.all()
     one_trip = Trip.objects.all()
     return render(request, "trip.html", {"trips": trip, "one_trip" : one_trip})
+
+def AnnouncementView(request):
+    announcement = Announcement.objects.all()
+    return render(request, "announcement.html", {"announcement": announcement})
 
 
 def EditStaffView(request, staff_id):
@@ -131,5 +138,23 @@ def EditBusView(request, bus_id):
 
     else:
         return render(request, 'edit_bus.html', {"bus":bus})
+
+def EditAnnouncementView(request, announcement_id):
+
+    announcement = Announcement.objects.filter(id=announcement_id)[0]
+    if request.method == "POST": 
+        try:
+            announcement.message = request.POST.get('message')
+            announcement.save()            
+            return render(request, 'edit_announcement.html', {"announcement":announcement})
+        except Exception :
+            raise Exception
+        
+            return render(request,"Something went wrong")
+
+    else:
+        return render(request, 'edit_announcement.html', {"announcement":announcement})
+
+        
 
         
