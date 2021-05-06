@@ -51,6 +51,13 @@ class StaffSerializer(serializers.ModelSerializer):
         model = Staff    
         fields = '__all__'
 
+class TripSerializer(serializers.ModelSerializer):
+    driver = DriverSerializer(read_only=True)
+    bus = BusSerializer(read_only=True)
+    class Meta:
+        model = Trip    
+        fields = '__all__'
+
 class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement

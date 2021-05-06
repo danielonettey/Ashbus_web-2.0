@@ -18,6 +18,7 @@ urlpatterns = [
     path('route_get/', RouteDataGet.as_view()),
     path('driver_get/', DriverDataGet.as_view()),
     path('staff_get/', StaffDataGet.as_view()),
+    path('trip_get/', TripDataGet.as_view()),
     path('announcement_get/', AnnouncementDataGet.as_view()),
 
 ]
