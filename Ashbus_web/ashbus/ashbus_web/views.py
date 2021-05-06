@@ -27,6 +27,10 @@ class StaffDataGet(generics.ListCreateAPIView):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
 
+class TripDataGet(generics.ListCreateAPIView):
+    queryset = Trip.objects.all()
+    serializer_class = TripSerializer
+
 class AnnouncementDataGet(generics.ListCreateAPIView):
     queryset = Announcement.objects.all()
     serializer_class = AnnouncementSerializer
