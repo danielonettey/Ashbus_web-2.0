@@ -104,6 +104,7 @@ class TripUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trip    
         fields = '__all__'
+        read_only_fields = ['start_time']
         # depth = 1
 
     def create(self,validated_data):
@@ -112,7 +113,7 @@ class TripUpdateSerializer(serializers.ModelSerializer):
             driver_taken = validated_data['driver']
             bus_taken = validated_data['bus']
 
-            trip.start_time = validated_data['start_time']
+            # trip.start_time = validated_data['start_time']
             trip.end_time = validated_data['end_time']
             trip.driver = validated_data['driver']
 
