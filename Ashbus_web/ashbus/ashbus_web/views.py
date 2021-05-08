@@ -11,6 +11,10 @@ class BusDataUpdate(generics.CreateAPIView):
     queryset = Bus.objects.all()
     serializer_class = BusUpdateSerializer 
 
+class TripDataUpdate(generics.CreateAPIView):
+    queryset = Trip.objects.all()
+    serializer_class = TripUpdateSerializer
+
 class BusDataGet(generics.ListCreateAPIView):
     queryset = Bus.objects.all()
     serializer_class = BusSerializer
