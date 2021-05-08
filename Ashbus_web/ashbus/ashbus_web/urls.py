@@ -14,6 +14,7 @@ urlpatterns = [
     path('editbus/<int:bus_id>/', EditBusView, name="edit_bus"),
     path('editannouncement/<int:announcement_id>/', EditAnnouncementView, name="edit_announcement"),
     path('bus_update/', BusDataUpdate.as_view()),
+    path('trip_create/', TripDataCreate.as_view()),
     path('trip_update/', TripDataUpdate.as_view()),
     path('bus_get/', BusDataGet.as_view()),
     path('route_get/', RouteDataGet.as_view()),
