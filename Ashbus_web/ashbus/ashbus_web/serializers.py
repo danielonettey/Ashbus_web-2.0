@@ -84,8 +84,10 @@ class StaffTripCreateSerializer(serializers.ModelSerializer):
         model = Staff_Trip    
         fields = '__all__'
 
-
-
+class StaffTripGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Staff_Trip    
+        fields = '__all__'
 
 class StaffTripUpdateSerializer(serializers.ModelSerializer):
     trip_id = serializers.CharField(write_only=True)
