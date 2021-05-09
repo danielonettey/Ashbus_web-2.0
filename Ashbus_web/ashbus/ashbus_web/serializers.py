@@ -75,24 +75,36 @@ class AnnouncementSerializer(serializers.ModelSerializer):
 
 
 class TripCreateSerializer(serializers.ModelSerializer):
-    # trip_id = serializers.CharField(write_only=True)
-    # bus_location = serializers.CharField(write_only=True)
-    # bus_status = serializers.CharField(write_only=True)
-    # bus_address = serializers.CharField(write_only=True)
-
     class Meta:
         model = Trip    
         fields = '__all__'
-        # depth = 1
 
-    # def create(self,validated_data):
-    #     try:
-    #         user = User.objects.create(**validated_data)
-    #         Trip.objects.create(user=user, **profile_data)
-            
+class StaffTripCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Staff_Trip    
+        fields = '__all__'
 
-    #     except IntegrityError:
-    #         return ValidationError("Something occured")
+
+
+
+class StaffTripUpdateSerializer(serializers.ModelSerializer):
+    trip_id = serializers.CharField(write_only=True)
+    class Meta:
+        model = Staff_Trip    
+        fields = ['trip_id','dropoff_location','dropoff_Address','dropoff_time','payment']
+
+    def create(self,validated_data):
+        try:
+            staff_Trip = Staff_Trip.objects.filter(id=validated_data['trip_id']).first()
+            staff_Trip.dropoff_location = validated_data['dropoff_location']
+            staff_Trip.dropoff_Address = validated_data['dropoff_Address']
+            staff_Trip.dropoff_time = validated_data['dropoff_time']
+            staff_Trip.payment = validated_data['payment']
+            staff_Trip.save()
+            return staff_Trip
+
+        except IntegrityError:
+            return ValidationError("Something occured")
 
 
 class TripUpdateSerializer(serializers.ModelSerializer):

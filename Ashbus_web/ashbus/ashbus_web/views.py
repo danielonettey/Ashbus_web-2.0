@@ -15,10 +15,19 @@ class TripDataUpdate(generics.CreateAPIView):
     queryset = Trip.objects.all()
     serializer_class = TripUpdateSerializer
 
+class StaffTripDataUpdate(generics.CreateAPIView):
+    queryset = Trip.objects.all()
+    serializer_class = StaffTripUpdateSerializer
+
+    
+
 class TripDataCreate(generics.CreateAPIView):
     queryset = Trip.objects.all()
     serializer_class = TripCreateSerializer
 
+class StaffTripDataCreate(generics.CreateAPIView):
+    queryset = Staff_Trip.objects.all()
+    serializer_class = StaffTripCreateSerializer
 
 
 class BusDataGet(generics.ListCreateAPIView):
